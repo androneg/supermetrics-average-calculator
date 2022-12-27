@@ -23,6 +23,8 @@ class ParamsBuilder
     {
         $startDate = (clone $date)->modify('first day of this month')->setTime(0, 0, 0);
         $endDate   = (clone $date)->modify('last day of this month')->setTime(23, 59, 59);
+        $averageStartDate = (clone $date)->modify('first day of July 2022')->setTime(0, 0, 0);
+        $averageEndDate   = (clone $date)->modify('last day of December 2022')->setTime(23, 59, 59);
 
         return [
             (new ParamsTo())
@@ -41,6 +43,10 @@ class ParamsBuilder
                 ->setStatName(StatsEnum::AVERAGE_POST_NUMBER_PER_USER)
                 ->setStartDate($startDate)
                 ->setEndDate($endDate),
+            (new ParamsTo())
+                ->setStatName(StatsEnum::AVERAGE_POST_NUMBER_PER_USER_PER_MONTH)
+                ->setStartDate($averageStartDate)
+                ->setEndDate($averageEndDate)
         ];
     }
 }
